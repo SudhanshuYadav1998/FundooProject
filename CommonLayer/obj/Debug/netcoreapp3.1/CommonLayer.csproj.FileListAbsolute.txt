@@ -1,0 +1,10 @@
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.deps.json
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.dll
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.pdb
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.csproj.AssemblyReference.cache
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.AssemblyInfoInputs.cache
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.AssemblyInfo.cs
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.csproj.CoreCompileInputs.cache
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.dll
+C:\RFP\C_sharp\FunDooNoteApplication\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.pdb

@@ -1,0 +1,15 @@
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.deps.json
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\CommonLayer.dll
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.dll
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.pdb
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\CommonLayer.pdb
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.AssemblyReference.cache
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfoInputs.cache
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfo.cs
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
