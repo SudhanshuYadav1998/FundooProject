@@ -55,12 +55,12 @@ namespace RepositoryLayer.Service
                 {
                     LoginResponseModel data = new LoginResponseModel();
                     string token = GenerateSecurityToken(Enteredlogin.Email, Enteredlogin.UserId);
-                    data.Id = Enteredlogin.UserId;
-                    data.FirstName = Enteredlogin.FirstName;
-                    data.LastName = Enteredlogin.LastName;
-                    data.Email = Enteredlogin.Email;
-                    data.Password = Enteredlogin.Password;
-                    data.Token = token;
+                    //data.Id = Enteredlogin.UserId;
+                    //data.FirstName = Enteredlogin.FirstName;
+                    //data.LastName = Enteredlogin.LastName;
+                    //data.Email = Enteredlogin.Email;
+                    //data.Password = Enteredlogin.Password;
+                    //data.Token = token;
                     return data;
                 }
                 else
