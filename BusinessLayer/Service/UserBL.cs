@@ -2,6 +2,7 @@
 using CommonLayer.Model;
 using RepositoryLayer.Entities;
 using RepositoryLayer.Interface;
+using RepositoryLayer.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +22,18 @@ namespace BusinessLayer.Service
             try
             {
                 return userRl.Registration(userRegistration);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        LoginResponseModel IUserBL.UserLogin(UserLoginModel user)
+        {
+            try
+            {
+                return userRl.UserLogin(user);
             }
             catch (Exception)
             {
