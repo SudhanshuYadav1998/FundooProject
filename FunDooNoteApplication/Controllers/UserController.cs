@@ -70,7 +70,7 @@ namespace FunDooNoteApplication.Controllers
                     return this.Ok(new { success = true, message = "Mail Sent Succesfully"});
                 }
                 else
-                    return this.BadRequest(new { success = false, message = "Unsuccessful" });
+                    return this.BadRequest(new { success = false, message = "Something Goes Wrong" });
             }
             catch (Exception ex)
             {
