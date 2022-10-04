@@ -16,9 +16,9 @@ namespace RepositoryLayer.Service
 {
     public class UserRL:IUserRL
     {
-        private readonly FundooContext _fundooContext;
+        private readonly fundoocontext _fundooContext;
         IConfiguration _Appsettings;
-        public UserRL(FundooContext fundooContext, IConfiguration Appsettings)
+        public UserRL(fundoocontext fundooContext, IConfiguration Appsettings)
         {
             _fundooContext = fundooContext;
             _Appsettings = Appsettings;
@@ -50,27 +50,23 @@ namespace RepositoryLayer.Service
             try
             {
                 var Enteredlogin = this._fundooContext.UserTable.Where(X => X.Email == info.Email && X.Password==info.Password).FirstOrDefault();
-                if ((Enteredlogin.Password) == info.Password)
+                if (Enteredlogin.Password == info.Password)
 
                 {
                     LoginResponseModel data = new LoginResponseModel();
                     string token = GenerateSecurityToken(Enteredlogin.Email, Enteredlogin.UserId);
-                    //data.Id = Enteredlogin.UserId;
-                    //data.FirstName = Enteredlogin.FirstName;
-                    //data.LastName = Enteredlogin.LastName;
-                    //data.Email = Enteredlogin.Email;
-                    //data.Password = Enteredlogin.Password;
-                    //data.Token = token;
+                    data.Token = token;
                     return data;
+
                 }
                 else
                 {
                     return null;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         private string GenerateSecurityToken(string Email, long UserId)
@@ -88,6 +84,30 @@ namespace RepositoryLayer.Service
               signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
 
+        }
+        public string ForgetPassword(string Email)
+        {
+            try
+            {
+                var EmailCheck = _fundooContext.UserTable.FirstOrDefault(e => e.Email == Email);
+                if(EmailCheck !=null)
+                {
+                    var token=GenerateSecurityToken(EmailCheck.Email,EmailCheck.UserId);
+                    MSMQModel mSMQModel=new MSMQModel();
+                    mSMQModel.sendData2Queue(token);
+                    return token.ToString();
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

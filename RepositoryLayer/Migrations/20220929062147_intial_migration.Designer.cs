@@ -8,7 +8,7 @@ using RepositoryLayer.Context;
 
 namespace RepositoryLayer.Migrations
 {
-    [DbContext(typeof(FundooContext))]
+    [DbContext(typeof(fundoocontext))]
     [Migration("20220929062147_intial_migration")]
     partial class intial_migration
     {

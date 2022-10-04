@@ -28,7 +28,7 @@ namespace FunDooNoteApplication
         // This method gets called by the runtime. Use this method to add services to the container..
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FundooContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:FundooDB"]));
+            services.AddDbContext<fundoocontext>(opts => opts.UseSqlServer(Configuration["ConnectionString:FundooDB"]));
             services.AddControllers();
             // services.AddSwaggerGen();
             services.AddSwaggerGen(c =>

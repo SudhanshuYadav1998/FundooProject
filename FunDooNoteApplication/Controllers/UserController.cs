@@ -34,10 +34,10 @@ namespace FunDooNoteApplication.Controllers
 
                 }
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
         [HttpPost("AllLogin")]
@@ -53,10 +53,29 @@ namespace FunDooNoteApplication.Controllers
                 else
                     return this.BadRequest(new { success = false, message = "Login Unsuccessful" });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
+            }
+        }
+        [HttpPost("ForgotPassword")]
+        public IActionResult ForgetPassword(string Email)
+        {
+            try
+            {
+                var result = userBL.ForgetPassword(Email);
+                if (result != null)
+                {
+                    return this.Ok(new { success = true, message = "Mail Sent Succesfully"});
+                }
+                else
+                    return this.BadRequest(new { success = false, message = "Unsuccessful" });
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }

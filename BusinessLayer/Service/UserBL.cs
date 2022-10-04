@@ -23,10 +23,10 @@ namespace BusinessLayer.Service
             {
                 return userRl.Registration(userRegistration);
             }
-            catch (Exception)
+            catch (Exception ex) 
             {
 
-                throw;
+                throw ex;
             }
         }
         LoginResponseModel IUserBL.UserLogin(UserLoginModel user)
@@ -34,6 +34,19 @@ namespace BusinessLayer.Service
             try
             {
                 return userRl.UserLogin(user);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public string ForgetPassword(string Email)
+        {
+            try
+            {
+                return userRl.ForgetPassword(Email);
+
             }
             catch (Exception)
             {

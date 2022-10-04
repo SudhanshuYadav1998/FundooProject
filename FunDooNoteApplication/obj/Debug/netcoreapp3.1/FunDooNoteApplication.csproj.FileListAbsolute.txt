@@ -59,3 +59,4 @@ C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\obj\Debug\netcoreapp3.1\FunDooNoteApplication.MvcApplicationPartsAssemblyInfo.cs
+C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\Experimental.System.Messaging.dll

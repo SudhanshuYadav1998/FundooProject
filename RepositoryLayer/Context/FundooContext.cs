@@ -7,9 +7,9 @@ using System.Text;
 namespace RepositoryLayer.Context
 {
 
-    public class FundooContext : DbContext
+    public class fundoocontext : DbContext
         {
-            public FundooContext(DbContextOptions options)
+            public fundoocontext(DbContextOptions options)
                 : base(options)
             {
             }
