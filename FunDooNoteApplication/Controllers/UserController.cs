@@ -41,17 +41,17 @@ namespace FunDooNoteApplication.Controllers
             }
         }
         [HttpPost("AllLogin")]
-        public IActionResult UserLogin(UserLoginModel userLogin)
+        public IActionResult UserLogin(string Email, string Password)
         {
             try
             {
-                var result = userBL.UserLogin(userLogin);
+                var result = userBL.UserLogin( Email, Password);
                 if (result != null)
                 {
                     return this.Ok(new { success = true, message = "Login Successful", data = result });
                 }
                 else
-                    return this.BadRequest(new { success = false, message = "Login Unsuccessful" });
+                    return this.BadRequest(new { success = false, message = "Login Unsuccessful"});
             }
             catch (Exception ex)
             {
@@ -68,6 +68,25 @@ namespace FunDooNoteApplication.Controllers
                 if (result != null)
                 {
                     return this.Ok(new { success = true, message = "Mail Sent Succesfully"});
+                }
+                else
+                    return this.BadRequest(new { success = false, message = "Something Goes Wrong" });
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        [HttpPost("ResetPassword")]
+        public IActionResult ResetPassword(string email, string password, string confirmPassword)
+        {
+            try
+            {
+                var result = userBL.ResetPassword(email,password,confirmPassword);
+                if (result != null)
+                {
+                    return this.Ok(new { success = true, message = "Password Changed Succesfully" });
                 }
                 else
                     return this.BadRequest(new { success = false, message = "Something Goes Wrong" });

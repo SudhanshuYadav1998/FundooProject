@@ -45,18 +45,17 @@ namespace RepositoryLayer.Service
                 throw e;
             }
         }
-        public LoginResponseModel UserLogin(UserLoginModel info)
+       
+        public string UserLogin(string Email,string Password)
         {
             try
             {
-                var Enteredlogin = this._fundooContext.UserTable.Where(X => X.Email == info.Email && X.Password==info.Password).FirstOrDefault();
-                if (Enteredlogin.Password == info.Password)
+                var Enteredlogin = this._fundooContext.UserTable.Where(X => X.Email == Email && X.Password == Password).FirstOrDefault();
+                if (Enteredlogin.Password == Password)
 
                 {
-                    LoginResponseModel data = new LoginResponseModel();
                     string token = GenerateSecurityToken(Enteredlogin.Email, Enteredlogin.UserId);
-                    data.Token = token;
-                    return data;
+                    return token;
 
                 }
                 else
@@ -69,6 +68,7 @@ namespace RepositoryLayer.Service
                 throw ex;
             }
         }
+
         private string GenerateSecurityToken(string Email, long UserId)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Appsettings["Jwt:SecKey"]));
@@ -102,6 +102,26 @@ namespace RepositoryLayer.Service
                     return null;
                 }
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool ResetPassword(string email, string password, string confirmPassword)
+        {
+            try
+            {
+                if (password.Equals(confirmPassword))
+                {
+                    UserEntity user = _fundooContext.UserTable.Where(e => e.Email == email).FirstOrDefault();
+                    user.Password = confirmPassword;
+                    _fundooContext.SaveChanges();
+                    return true;
+                }
+                else
+                    return false;
             }
             catch (Exception)
             {

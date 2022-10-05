@@ -29,11 +29,11 @@ namespace BusinessLayer.Service
                 throw ex;
             }
         }
-        LoginResponseModel IUserBL.UserLogin(UserLoginModel user)
+        public string UserLogin(string Email, string Password)
         {
             try
             {
-                return userRl.UserLogin(user);
+                return userRl.UserLogin(Email, Password);
             }
             catch (Exception ex)
             {
@@ -47,6 +47,18 @@ namespace BusinessLayer.Service
             {
                 return userRl.ForgetPassword(Email);
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool ResetPassword(string email, string password, string confirmPassword)
+        {
+            try
+            {
+                return userRl.ResetPassword(email,password,confirmPassword);
             }
             catch (Exception)
             {
