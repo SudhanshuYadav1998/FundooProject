@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Claims;
 
 namespace FunDooNoteApplication.Controllers
 {
@@ -78,11 +79,13 @@ namespace FunDooNoteApplication.Controllers
                 throw ex;
             }
         }
-        [HttpPost("ResetPassword")]
-        public IActionResult ResetPassword(string email, string password, string confirmPassword)
+        
+        [HttpPut("ResetPassword")]
+        public IActionResult ResetPassword(string password, string confirmPassword)
         {
             try
             {
+                var email = User.FindFirst(ClaimTypes.Email).Value.ToString();
                 var result = userBL.ResetPassword(email,password,confirmPassword);
                 if (result != null)
                 {

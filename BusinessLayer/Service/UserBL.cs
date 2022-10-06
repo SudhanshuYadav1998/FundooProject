@@ -54,7 +54,7 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
-        public bool ResetPassword(string email, string password, string confirmPassword)
+        public bool ResetPassword(string email,string password, string confirmPassword)
         {
             try
             {

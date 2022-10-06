@@ -46,12 +46,12 @@ namespace RepositoryLayer.Service
             }
         }
        
-        public string UserLogin(string Email,string Password)
+        public string UserLogin(string Email, string Password)
         {
             try
             {
                 var Enteredlogin = this._fundooContext.UserTable.Where(X => X.Email == Email && X.Password == Password).FirstOrDefault();
-                if (Enteredlogin.Password == Password)
+                if (Enteredlogin != null)
 
                 {
                     string token = GenerateSecurityToken(Enteredlogin.Email, Enteredlogin.UserId);
