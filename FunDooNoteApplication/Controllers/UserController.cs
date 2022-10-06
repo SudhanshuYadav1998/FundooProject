@@ -52,7 +52,7 @@ namespace FunDooNoteApplication.Controllers
                     return this.Ok(new { success = true, message = "Login Successful", data = result });
                 }
                 else
-                    return this.BadRequest(new { success = false, message = "Login Unsuccessful"});
+                    return this.BadRequest(new { success = false, message = "Something Goes Wrong,Login Unsuccessful" });
             }
             catch (Exception ex)
             {
