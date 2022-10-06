@@ -79,7 +79,7 @@ namespace FunDooNoteApplication.Controllers
                 throw ex;
             }
         }
-        
+        [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut("ResetPassword")]
         public IActionResult ResetPassword(string password, string confirmPassword)
         {
