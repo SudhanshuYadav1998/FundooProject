@@ -7,14 +7,14 @@ using System.Text;
 namespace RepositoryLayer.Context
 {
 
-    public class fundoocontext : DbContext
+    public class Fundoocontext : DbContext
         {
-            public fundoocontext(DbContextOptions options)
+            public Fundoocontext(DbContextOptions options)
                 : base(options)
             {
             }
             public DbSet<UserEntity> UserTable { get; set; }
-            public DbSet<NoteEntity> NoteTable { get; set; }
+            public DbSet<Note> NoteTable { get; set; }
         }
     }
 

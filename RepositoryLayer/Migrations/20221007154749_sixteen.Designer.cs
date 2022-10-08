@@ -9,9 +9,9 @@ using RepositoryLayer.Context;
 
 namespace RepositoryLayer.Migrations
 {
-    [DbContext(typeof(fundoocontext))]
-    [Migration("20221006112853_tenthMigration")]
-    partial class tenthMigration
+    [DbContext(typeof(Fundoocontext))]
+    [Migration("20221007154749_sixteen")]
+    partial class sixteen
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace RepositoryLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RepositoryLayer.Entities.NoteEntity", b =>
+            modelBuilder.Entity("RepositoryLayer.Entities.Note", b =>
                 {
                     b.Property<long>("NoteId")
                         .ValueGeneratedOnAdd()
@@ -92,9 +92,9 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("UserTable");
                 });
 
-            modelBuilder.Entity("RepositoryLayer.Entities.NoteEntity", b =>
+            modelBuilder.Entity("RepositoryLayer.Entities.Note", b =>
                 {
-                    b.HasOne("RepositoryLayer.Entities.UserEntity", "user")
+                    b.HasOne("RepositoryLayer.Entities.UserEntity", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

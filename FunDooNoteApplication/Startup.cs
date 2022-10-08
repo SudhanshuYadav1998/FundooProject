@@ -28,7 +28,7 @@ namespace FunDooNoteApplication
         // This method gets called by the runtime. Use this method to add services to the container..
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<fundoocontext>(opts => opts.UseSqlServer(Configuration["ConnectionString:FundooDB"]));
+            services.AddDbContext<Fundoocontext>(opts => opts.UseSqlServer(Configuration["ConnectionString:FundooDB"]));
             services.AddControllers();
             // services.AddSwaggerGen();
             services.AddSwaggerGen(c =>
@@ -61,8 +61,14 @@ namespace FunDooNoteApplication
 
                 });
             });
-            services.AddTransient<IUserRL, UserRL>();
             services.AddTransient<IUserBL, UserBL>();
+            services.AddTransient<IUserRL, UserRL>();
+            services.AddTransient<INoteBL, NotesBL>();
+            services.AddTransient<INoteRL, NotesRL>();
+
+
+
+
             services.AddAuthentication(option =>
             {
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

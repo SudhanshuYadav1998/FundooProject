@@ -41,7 +41,7 @@ namespace FunDooNoteApplication.Controllers
                 throw ex;
             }
         }
-        [HttpPost("AllLogin")]
+        [HttpPost("Login")]
         public IActionResult UserLogin(string Email, string Password)
         {
             try
@@ -87,7 +87,7 @@ namespace FunDooNoteApplication.Controllers
             {
                 var email = User.FindFirst(ClaimTypes.Email).Value.ToString();
                 var result = userBL.ResetPassword(email,password,confirmPassword);
-                if (result != null)
+                if (result != false)
                 {
                     return this.Ok(new { success = true, message = "Password Changed Succesfully" });
                 }
