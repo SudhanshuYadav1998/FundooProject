@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class sixteen : Migration
+    public partial class twentyfour : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "NoteTable",
+                name: "NotesTable",
                 columns: table => new
                 {
                     NoteId = table.Column<long>(nullable: false)
@@ -16,20 +16,20 @@ namespace RepositoryLayer.Migrations
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Reminder = table.Column<DateTime>(nullable: false),
-                    Color = table.Column<string>(nullable: true),
-                    Image = table.Column<string>(nullable: true),
-                    Archieve = table.Column<bool>(nullable: false),
-                    IsPinned = table.Column<bool>(nullable: false),
-                    Trash = table.Column<bool>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Edited = table.Column<DateTime>(nullable: false),
+                    IsPinned = table.Column<bool>(nullable: false),
+                    Trash = table.Column<bool>(nullable: false),
+                    Archieve = table.Column<bool>(nullable: false),
+                    Color = table.Column<string>(nullable: true),
+                    BgImage = table.Column<string>(nullable: true),
                     UserId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NoteTable", x => x.NoteId);
+                    table.PrimaryKey("PK_NotesTable", x => x.NoteId);
                     table.ForeignKey(
-                        name: "FK_NoteTable_UserTable_UserId",
+                        name: "FK_NotesTable_UserTable_UserId",
                         column: x => x.UserId,
                         principalTable: "UserTable",
                         principalColumn: "UserId",
@@ -37,15 +37,15 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_NoteTable_UserId",
-                table: "NoteTable",
+                name: "IX_NotesTable_UserId",
+                table: "NotesTable",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "NoteTable");
+                name: "NotesTable");
         }
     }
 }

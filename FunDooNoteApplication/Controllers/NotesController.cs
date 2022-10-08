@@ -19,7 +19,7 @@ namespace FunDooNoteApplication.Controllers
     {
         private readonly INoteBL noteBL;
         private readonly Fundoocontext fundooContext;
-        public NotesController(INoteBL noteBL,Fundoocontext fundoocontext)
+        public NotesController(INoteBL noteBL, Fundoocontext fundoocontext)
         {
             this.fundooContext = fundoocontext;
             this.noteBL = noteBL;
@@ -33,9 +33,9 @@ namespace FunDooNoteApplication.Controllers
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
                 var result = this.noteBL.GenerateNote(noteModel, userId);
 
-                if (result!=null)
+                if (result != null)
                 {
-                    return this.Ok(new { success = true, message = "Note Added Successfully",data=noteModel });
+                    return this.Ok(new { success = true, message = "Note Added Successfully", data = noteModel });
                 }
                 else
                 {
@@ -50,12 +50,12 @@ namespace FunDooNoteApplication.Controllers
             }
         }
         [HttpGet("GetAllNotes")]
-        public List<Note> GetAllNotes()
+        public List<NotesEntity> GetAllNotes()
         {
             try
             {
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
-                var result =  this.noteBL.GetAllNotes(userId);
+                var result = this.noteBL.GetAllNotes(userId);
                 return result;
             }
             catch (Exception)
@@ -64,6 +64,27 @@ namespace FunDooNoteApplication.Controllers
                 throw;
             }
 
+        }
+        [HttpDelete("Delete")]
+        public IActionResult DeleteNotesOfUser(long notesid)
+        {
+            try
+
+            {
+                long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                if (this.noteBL.DeleteApi(notesid))
+                {
+                    return this.Ok(new { Success = true, message = "Deleted successfully" });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "No Such Registration Found" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new { Status = false, message = ex.InnerException.Message });
+            }
         }
     }
 }

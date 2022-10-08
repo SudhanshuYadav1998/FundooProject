@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RepositoryLayer.Entities
 {
-    public class Note
+    public class NotesEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -14,13 +14,13 @@ namespace RepositoryLayer.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime Reminder { get; set; }
-        public string Color { get; set; }
-        public string Image { get; set; }
-        public bool Archieve { get; set; }
-        public bool IsPinned { get; set; }
-        public bool Trash { get; set; }
         public DateTime Created { get; set; }
         public DateTime Edited { get; set; }
+        public bool IsPinned { get; set; }
+        public bool Trash { get; set; }
+        public bool Archieve { get; set; }
+        public string Color { get; set; }
+        public string BgImage { get; set; }
         [ForeignKey("User")]
         public long UserId { get; set; }
         public virtual UserEntity User { get; set; }

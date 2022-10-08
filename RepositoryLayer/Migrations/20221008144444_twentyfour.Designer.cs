@@ -10,8 +10,8 @@ using RepositoryLayer.Context;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(Fundoocontext))]
-    [Migration("20221007154749_sixteen")]
-    partial class sixteen
+    [Migration("20221008144444_twentyfour")]
+    partial class twentyfour
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace RepositoryLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RepositoryLayer.Entities.Note", b =>
+            modelBuilder.Entity("RepositoryLayer.Entities.NotesEntity", b =>
                 {
                     b.Property<long>("NoteId")
                         .ValueGeneratedOnAdd()
@@ -30,6 +30,9 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<bool>("Archieve")
                         .HasColumnType("bit");
+
+                    b.Property<string>("BgImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
@@ -42,9 +45,6 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<DateTime>("Edited")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsPinned")
                         .HasColumnType("bit");
@@ -65,7 +65,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("NoteTable");
+                    b.ToTable("NotesTable");
                 });
 
             modelBuilder.Entity("RepositoryLayer.Entities.UserEntity", b =>
@@ -92,7 +92,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("UserTable");
                 });
 
-            modelBuilder.Entity("RepositoryLayer.Entities.Note", b =>
+            modelBuilder.Entity("RepositoryLayer.Entities.NotesEntity", b =>
                 {
                     b.HasOne("RepositoryLayer.Entities.UserEntity", "User")
                         .WithMany()

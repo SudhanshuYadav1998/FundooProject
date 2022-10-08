@@ -9,15 +9,15 @@ using System.Text;
 
 namespace BusinessLayer.Service
 {
-    public class NotesBL:INoteBL
+    public class NotesBL : INoteBL
     {
         private readonly INoteRL notesRL;
         public NotesBL(INoteRL notesRL)
         {
             this.notesRL = notesRL;
         }
-       
-        public Note GenerateNote(NotesModel noteModel, long userId)
+
+        public NotesEntity GenerateNote(NotesModel noteModel, long userId)
         {
 
             try
@@ -29,11 +29,25 @@ namespace BusinessLayer.Service
 
                 throw;
             }
-            
+
         }
-        public List<Note> GetAllNotes(long UserId)
+        public List<NotesEntity> GetAllNotes(long UserId)
         {
             return notesRL.GetAllNotes(UserId);
         }
+        public bool DeleteApi(long noteid)
+        {
+            try
+            {
+                return notesRL.DeleteApi(noteid);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
+
 }

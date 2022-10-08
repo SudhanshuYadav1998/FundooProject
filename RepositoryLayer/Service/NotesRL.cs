@@ -21,24 +21,24 @@ namespace RepositoryLayer.Service
             
         }
 
-        public Note GenerateNote(NotesModel noteModel, long userId)
+        public NotesEntity GenerateNote(NotesModel noteModel, long userId)
         {
             try
             {
-                Note noteEntity = new Note();
-
-                    noteEntity.UserId = userId;
-                    noteEntity.Title = noteModel.Title;
-                    noteEntity.Description = noteModel.Description;
-                    noteEntity.Reminder = noteModel.Reminder;
-                    noteEntity.Created = noteModel.Created;
-                    noteEntity.Edited = noteModel.Edited;
-                    noteEntity.Trash = noteModel.Trash;
-                    noteEntity.Archieve = noteModel.Archieve;
-                    noteEntity.Color = noteModel.Color;
-                    noteEntity.Image = noteModel.Image;
-                    noteEntity.IsPinned = noteModel.IsPinned;
-                    fundoocontext.NoteTable.Add(noteEntity);
+                NotesEntity noteEntity = new NotesEntity
+                {
+                    UserId = userId,
+                    Title = noteModel.Title,
+                    Description = noteModel.Description,
+                    Reminder = noteModel.Reminder,
+                    Created = noteModel.Created,
+                    Edited = noteModel.Edited,
+                    IsPinned = noteModel.IsPinned,
+                    BgImage = noteModel.BgImage,
+                    Archieve=noteModel.Archieve,
+                    Trash=noteModel.Trash,
+                };
+                fundoocontext.NotesTable.Add(noteEntity);
                     int result=fundoocontext.SaveChanges();
                 if(result!=0)
                 { 
@@ -54,11 +54,11 @@ namespace RepositoryLayer.Service
             }
 
         }
-        public List<Note> GetAllNotes(long UserId)
+        public List<NotesEntity> GetAllNotes(long UserId)
         {
             try
             {
-                return fundoocontext.NoteTable.Where(x => x.UserId == UserId).ToList();
+                return fundoocontext.NotesTable.Where(x => x.UserId == UserId).ToList();
             }
             catch (Exception)
             {
@@ -66,18 +66,57 @@ namespace RepositoryLayer.Service
                 throw;
             }
         }
-        public List<Note> DeleteApi(long noteid)
+        public bool DeleteApi(long noteid)
         {
             try
             {
-                return fundoocontext.NoteTable.Where(x => x.NoteId == noteid).ToList();
+                var noteCheck= fundoocontext.NotesTable.Where(x => x.NoteId == noteid).FirstOrDefault();
+                this.fundoocontext.NotesTable.Remove(noteCheck);
+                int result = this.fundoocontext.SaveChanges();
+                if (result!=0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+            
             catch (Exception)
             {
 
                 throw;
             }
         }
+        public NotesEntity UpdateNote(NotesModel noteModel, long userId)
+        {
+            try
+            {
+                NotesEntity noteEntity = new NotesEntity
+                {
+                    UserId = userId,
+                    Title = noteModel.Title,
+                    Description = noteModel.Description,
+                    Reminder = noteModel.Reminder,
+                    Created = noteModel.Created,
+                    Edited = noteModel.Edited
+                };
+                fundoocontext.NotesTable.Add(noteEntity);
+                int result = fundoocontext.SaveChanges();
+                if (result != 0)
+                {
+                    return noteEntity;
+                }
+                else
+                { return null; }
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+
+        }
     }
 }
