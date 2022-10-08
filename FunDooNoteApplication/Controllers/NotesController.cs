@@ -55,7 +55,7 @@ namespace FunDooNoteApplication.Controllers
             try
             {
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
-                var result = this.noteBL.GetAllNotes(userId);
+                var result =  this.noteBL.GetAllNotes(userId);
                 return result;
             }
             catch (Exception)
