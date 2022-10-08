@@ -56,7 +56,15 @@ namespace RepositoryLayer.Service
         }
         public List<Note> GetAllNotes(long UserId)
         {
-            return  fundoocontext.NoteTable.Where(x => x.UserId == UserId).ToList();
+            try
+            {
+                return fundoocontext.NoteTable.Where(x => x.UserId == UserId).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
     }
