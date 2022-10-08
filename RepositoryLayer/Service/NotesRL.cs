@@ -39,7 +39,7 @@ namespace RepositoryLayer.Service
                     Trash=noteModel.Trash,
                 };
                 fundoocontext.NotesTable.Add(noteEntity);
-                    int result=fundoocontext.SaveChanges();
+                   int result=fundoocontext.SaveChanges();
                 if(result!=0)
                 { 
                     return noteEntity;
