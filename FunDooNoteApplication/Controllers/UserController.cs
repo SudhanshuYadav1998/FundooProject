@@ -42,11 +42,11 @@ namespace FunDooNoteApplication.Controllers
             }
         }
         [HttpPost("Login")]
-        public IActionResult UserLogin(string Email, string Password)
+        public IActionResult UserLogin(UserLogin userlogin)
         {
             try
             {
-                var result = userBL.UserLogin( Email, Password);
+                var result = userBL.UserLogin(userlogin);
                 if (result != null)
                 {
                     return this.Ok(new { success = true, message = "Login Successful", data = result });

@@ -46,11 +46,11 @@ namespace RepositoryLayer.Service
             }
         }
        
-        public string UserLogin(string Email, string Password)
+        public string UserLogin(UserLogin userlogin)
         {
             try
             {
-                var Enteredlogin = this._fundooContext.UserTable.Where(X => X.Email == Email && X.Password == Password).FirstOrDefault();
+                var Enteredlogin = this._fundooContext.UserTable.Where(X => X.Email == userlogin.Email && X.Password == userlogin.Password).FirstOrDefault();
                 if (Enteredlogin != null)
 
                 {

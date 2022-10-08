@@ -66,6 +66,18 @@ namespace RepositoryLayer.Service
                 throw;
             }
         }
+        public List<Note> DeleteApi(long noteid)
+        {
+            try
+            {
+                return fundoocontext.NoteTable.Where(x => x.NoteId == noteid).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
     }
 }
