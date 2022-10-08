@@ -21,7 +21,7 @@ namespace RepositoryLayer.Service
             
         }
 
-        public bool GenerateNote(NotesModel noteModel, long userId)
+        public Note GenerateNote(NotesModel noteModel, long userId)
         {
             try
             {
@@ -42,10 +42,10 @@ namespace RepositoryLayer.Service
                     int result=fundoocontext.SaveChanges();
                 if(result!=0)
                 { 
-                    return true;
+                    return noteEntity;
                 }
                 else
-                { return false; }
+                { return null; }
             }
             catch (Exception ex)
             {

@@ -8,7 +8,7 @@ namespace RepositoryLayer.Interface
 {
     public interface INoteRL
     {
-        public bool GenerateNote(NotesModel noteModel, long userId);
+        public Note GenerateNote(NotesModel noteModel, long userId);
         public List<Note> GetAllNotes(long UserId);
     }
 }

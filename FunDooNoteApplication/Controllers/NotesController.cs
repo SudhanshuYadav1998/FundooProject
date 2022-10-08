@@ -35,7 +35,7 @@ namespace FunDooNoteApplication.Controllers
 
                 if (result!=null)
                 {
-                    return this.Ok(new { success = true, message = "Note Added Successfully" });
+                    return this.Ok(new { success = true, message = "Note Added Successfully",data=noteModel });
                 }
                 else
                 {

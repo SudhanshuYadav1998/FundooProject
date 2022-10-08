@@ -17,7 +17,7 @@ namespace BusinessLayer.Service
             this.notesRL = notesRL;
         }
        
-        public bool GenerateNote(NotesModel noteModel, long userId)
+        public Note GenerateNote(NotesModel noteModel, long userId)
         {
 
             try
