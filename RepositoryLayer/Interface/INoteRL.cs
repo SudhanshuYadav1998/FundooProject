@@ -14,6 +14,7 @@ namespace RepositoryLayer.Interface
         public NotesModel UpdateNote(NotesModel noteModel, long noteId);
         public bool Pinned(long noteid);
         public bool Trash(long noteid);
+
         public bool Archieve(long noteid);
     }
 }

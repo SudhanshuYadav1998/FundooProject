@@ -131,6 +131,7 @@ namespace FunDooNoteApplication.Controllers
                 throw ex;
             }
         }
+
         [HttpPut("Trash")]
         public IActionResult Trash(long noteId)
         {
@@ -153,6 +154,7 @@ namespace FunDooNoteApplication.Controllers
                 throw ex;
             }
         }
+
         [HttpPut("Archieve")]
         public IActionResult Archieve(long noteId)
         {

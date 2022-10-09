@@ -41,6 +41,7 @@ namespace RepositoryLayer.Service
                 };
                 fundoocontext.NotesTable.Add(noteEntity);
                    int result=fundoocontext.SaveChanges();
+
                 if(result!=0)
                 { 
                     return noteEntity;
