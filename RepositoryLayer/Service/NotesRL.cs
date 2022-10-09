@@ -104,24 +104,85 @@ namespace RepositoryLayer.Service
                     update.Edited = noteModel.Edited;
                     }
 
-                    //fundoocontext.NotesTable.Add(update);
                     int result = fundoocontext.SaveChanges();
                     if (result != 0)
                     {
                         return noteModel;
                     }
-                    
-                   
-                
-                 return null; 
+                else 
+                {
+                    return null;
+                }
             }
             catch(Exception)
             {
                 throw;
             }
            
+        }
+        public bool Pinned(long noteid)
+        {
+            try
+            {
+                var pinned = fundoocontext.NotesTable.Where(x => x.NoteId == noteid).FirstOrDefault();
+                if (pinned.IsPinned==true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
 
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool Trash(long noteid)
+        {
+            try
+            {
+                var trash = fundoocontext.NotesTable.Where(x => x.NoteId == noteid).FirstOrDefault();
+                if (trash.Trash == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool Archieve(long noteid)
+        {
+            try
+            {
+                var archieve = fundoocontext.NotesTable.Where(x => x.NoteId == noteid).FirstOrDefault();
+                if (archieve.Archieve == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
+ }
 

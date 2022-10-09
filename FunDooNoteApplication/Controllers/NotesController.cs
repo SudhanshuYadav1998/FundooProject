@@ -108,5 +108,71 @@ namespace FunDooNoteApplication.Controllers
                 throw ex;
             }
         }
+        [HttpPut("Pin")]
+        public IActionResult Pinned( long noteId)
+        {
+            try
+
+            {
+                long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                var notes = this.noteBL.Pinned(noteId);
+                if (notes != false)
+                {
+                    return this.Ok(new { Success = true, message = "You have pinned your Note" });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "No Such Note Found" });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        [HttpPut("Trash")]
+        public IActionResult Trash(long noteId)
+        {
+            try
+
+            {
+                long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                var notes = this.noteBL.Trash( noteId);
+                if (notes != false)
+                {
+                    return this.Ok(new { Success = true, message = "You have pinned your Note" });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "No Such Note Found" });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        [HttpPut("Archieve")]
+        public IActionResult Archieve(long noteId)
+        {
+            try
+
+            {
+                long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                var notes = this.noteBL.Archieve(noteId);
+                if (notes != false)
+                {
+                    return this.Ok(new { Success = true, message = "You have pinned your Note" });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "No Such Note Found" });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
