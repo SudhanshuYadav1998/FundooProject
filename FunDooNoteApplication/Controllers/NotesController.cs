@@ -108,6 +108,7 @@ namespace FunDooNoteApplication.Controllers
                 throw ex;
             }
         }
+
         [HttpPut("Pin")]
         public IActionResult Pinned( long noteId)
         {
