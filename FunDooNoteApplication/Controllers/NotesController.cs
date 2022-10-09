@@ -165,7 +165,7 @@ namespace FunDooNoteApplication.Controllers
                 var notes = this.noteBL.Archieve(noteId);
                 if (notes != false)
                 {
-                    return this.Ok(new { Success = true, message = "your Note is archieved" });
+                    return this.Ok(new { Success = true, message = "your Note is archieved " });
                 }
                 else
                 {
