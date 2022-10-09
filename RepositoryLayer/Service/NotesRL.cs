@@ -21,7 +21,7 @@ namespace RepositoryLayer.Service
             
         }
 
-        public NotesEntity GenerateNote(NotesModel noteModel, long userId)
+        public NotesEntity GenerateNote(NotesModel noteModel,long userId)
         {
             try
             {
