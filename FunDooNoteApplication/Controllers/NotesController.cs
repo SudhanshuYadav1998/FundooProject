@@ -83,7 +83,7 @@ namespace FunDooNoteApplication.Controllers
             }
             catch (Exception ex)
             {
-                return this.BadRequest(new { Status = false, message = ex.InnerException.Message });
+                throw ex;
             }
         }
         [HttpPut("Update")]
@@ -96,7 +96,7 @@ namespace FunDooNoteApplication.Controllers
                 NotesModel notes = this.noteBL.UpdateNote(notesModel,noteId);
                 if (notes!=null )
                 {
-                    return this.Ok(new { Success = true, message = "Note updated successfully" });
+                    return this.Ok(new { Success = true, message = "Note updated successfully",data=notesModel });
                 }
                 else
                 {
@@ -105,7 +105,7 @@ namespace FunDooNoteApplication.Controllers
             }
             catch (Exception ex)
             {
-                return this.BadRequest(new { Status = false, message = ex.InnerException.Message });
+                throw ex;
             }
         }
     }
