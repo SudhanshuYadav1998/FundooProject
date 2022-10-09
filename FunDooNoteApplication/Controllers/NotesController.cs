@@ -87,13 +87,13 @@ namespace FunDooNoteApplication.Controllers
             }
         }
         [HttpPut("Update")]
-        public IActionResult UpdateNotesOfUser(NotesModel notesModel,long NoteId)
+        public IActionResult UpdateNotesOfUser(NotesModel notesModel,long noteId)
         {
             try
 
             {
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
-                NotesModel notes = this.noteBL.UpdateNote(notesModel,NoteId);
+                NotesModel notes = this.noteBL.UpdateNote(notesModel,noteId);
                 if (notes!=null )
                 {
                     return this.Ok(new { Success = true, message = "Note updated successfully" });

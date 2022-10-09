@@ -47,11 +47,11 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
-        public NotesModel UpdateNote(NotesModel noteModel, long NoteId)
+        public NotesModel UpdateNote(NotesModel noteModel, long noteId)
         {
             try
             {
-                return notesRL.UpdateNote(noteModel,NoteId);
+                return notesRL.UpdateNote(noteModel,noteId);
             }
             catch (Exception)
             {

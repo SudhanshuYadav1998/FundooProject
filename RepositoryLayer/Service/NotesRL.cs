@@ -90,12 +90,12 @@ namespace RepositoryLayer.Service
                 throw;
             }
         }
-        public NotesModel UpdateNote(NotesModel noteModel, long NoteId)
+        public NotesModel UpdateNote(NotesModel noteModel, long noteId)
         {
             try
             {
-                var update = fundoocontext.NotesTable.Where(x => x.NoteId == NoteId).FirstOrDefault();
-                if (update != null&& update.NoteId==NoteId)
+                var update = fundoocontext.NotesTable.Where(x => x.NoteId == noteId).FirstOrDefault();
+                if (update != null&& update.NoteId==noteId)
                 
                     {
                     update.Title = noteModel.Title;
@@ -104,7 +104,7 @@ namespace RepositoryLayer.Service
                     update.Edited = noteModel.Edited;
                     }
 
-                    fundoocontext.NotesTable.Add(update);
+                    //fundoocontext.NotesTable.Add(update);
                     int result = fundoocontext.SaveChanges();
                     if (result != 0)
                     {
