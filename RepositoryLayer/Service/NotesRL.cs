@@ -91,7 +91,7 @@ namespace RepositoryLayer.Service
                 throw;
             }
         }
-        public NotesModel UpdateNote(NotesModel noteModel, long noteId)
+        public bool UpdateNote(NotesModel noteModel, long noteId)
         {
             try
             {
@@ -108,11 +108,11 @@ namespace RepositoryLayer.Service
                     int result = fundoocontext.SaveChanges();
                     if (result != 0)
                     {
-                        return noteModel;
+                        return true;
                     }
                 else 
                 {
-                    return null;
+                    return false;
                 }
             }
             catch(Exception)

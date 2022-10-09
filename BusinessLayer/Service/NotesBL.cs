@@ -47,7 +47,7 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
-        public NotesModel UpdateNote(NotesModel noteModel, long noteId)
+        public bool UpdateNote(NotesModel noteModel, long noteId)
         {
             try
             {

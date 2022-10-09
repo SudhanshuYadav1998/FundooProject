@@ -93,8 +93,8 @@ namespace FunDooNoteApplication.Controllers
 
             {
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
-                NotesModel notes = this.noteBL.UpdateNote(notesModel,noteId);
-                if (notes!=null )
+                var notes = this.noteBL.UpdateNote(notesModel,noteId);
+                if (notes!=false )
                 {
                     return this.Ok(new { Success = true, message = "Note updated successfully",data=notesModel });
                 }
