@@ -86,5 +86,27 @@ namespace FunDooNoteApplication.Controllers
                 return this.BadRequest(new { Status = false, message = ex.InnerException.Message });
             }
         }
+        [HttpPut("Update")]
+        public IActionResult UpdateNotesOfUser(NotesModel notesModel,long NoteId)
+        {
+            try
+
+            {
+                long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                NotesModel notes = this.noteBL.UpdateNote(notesModel,NoteId);
+                if (notes!=null )
+                {
+                    return this.Ok(new { Success = true, message = "Note updated successfully" });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "No Such Note Found" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new { Status = false, message = ex.InnerException.Message });
+            }
+        }
     }
 }

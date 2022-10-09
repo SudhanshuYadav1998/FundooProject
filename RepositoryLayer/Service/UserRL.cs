@@ -27,11 +27,13 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                UserEntity userEntity = new UserEntity();
-                userEntity.FirstName = userRegistration.FirstName;
-                userEntity.LastName = userRegistration.LastName;
-                userEntity.Email = userRegistration.Email;
-                userEntity.Password = userRegistration.Password;
+                UserEntity userEntity = new UserEntity
+                {
+                    FirstName = userRegistration.FirstName,
+                    LastName = userRegistration.LastName,
+                    Email = userRegistration.Email,
+                    Password = userRegistration.Password,
+                };
                 _fundooContext.UserTable.Add(userEntity);
                 int result=_fundooContext.SaveChanges();
                 if(result > 0)

@@ -36,6 +36,7 @@ namespace RepositoryLayer.Service
                     IsPinned = noteModel.IsPinned,
                     BgImage = noteModel.BgImage,
                     Archieve=noteModel.Archieve,
+                    Color=noteModel.Color,
                     Trash=noteModel.Trash,
                 };
                 fundoocontext.NotesTable.Add(noteEntity);
@@ -89,34 +90,38 @@ namespace RepositoryLayer.Service
                 throw;
             }
         }
-        public NotesEntity UpdateNote(NotesModel noteModel, long userId)
+        public NotesModel UpdateNote(NotesModel noteModel, long NoteId)
         {
             try
             {
-                NotesEntity noteEntity = new NotesEntity
-                {
-                    UserId = userId,
-                    Title = noteModel.Title,
-                    Description = noteModel.Description,
-                    Reminder = noteModel.Reminder,
-                    Created = noteModel.Created,
-                    Edited = noteModel.Edited
-                };
-                fundoocontext.NotesTable.Add(noteEntity);
-                int result = fundoocontext.SaveChanges();
-                if (result != 0)
-                {
-                    return noteEntity;
-                }
-                else
-                { return null; }
-            }
-            catch (Exception ex)
-            {
+                var update = fundoocontext.NotesTable.Where(x => x.NoteId == NoteId).FirstOrDefault();
+                if (update != null&& update.NoteId==NoteId)
+                
+                    {
+                    update.Title = noteModel.Title;
+                    update.Description = noteModel.Description;
+                    update.Reminder = noteModel.Reminder;
+                    update.Edited = noteModel.Edited;
+                    }
 
-                throw ex;
+                    fundoocontext.NotesTable.Add(update);
+                    int result = fundoocontext.SaveChanges();
+                    if (result != 0)
+                    {
+                        return noteModel;
+                    }
+                    
+                   
+                
+                 return null; 
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+           
             }
 
         }
     }
-}
+
