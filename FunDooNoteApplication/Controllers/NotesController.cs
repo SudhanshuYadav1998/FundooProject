@@ -142,7 +142,7 @@ namespace FunDooNoteApplication.Controllers
                 var notes = this.noteBL.Trash( noteId);
                 if (notes != false)
                 {
-                    return this.Ok(new { Success = true, message = "You have pinned your Note" });
+                    return this.Ok(new { Success = true, message = "your Note is in trash" });
                 }
                 else
                 {
@@ -165,7 +165,7 @@ namespace FunDooNoteApplication.Controllers
                 var notes = this.noteBL.Archieve(noteId);
                 if (notes != false)
                 {
-                    return this.Ok(new { Success = true, message = "You have pinned your Note" });
+                    return this.Ok(new { Success = true, message = "your Note is archieved" });
                 }
                 else
                 {
