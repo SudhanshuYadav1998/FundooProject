@@ -154,7 +154,6 @@ namespace RepositoryLayer.Service
                 {
                     trash.Trash = false;
                     fundoocontext.SaveChanges();
-
                     return false;
                 }
                 else
