@@ -142,8 +142,7 @@ namespace RepositoryLayer.Service
 
             catch (Exception)
             {
-
-                throw;
+                    throw;
             }
         }
         public bool Trash(long noteid)
