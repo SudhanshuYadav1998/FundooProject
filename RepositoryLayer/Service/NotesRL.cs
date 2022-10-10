@@ -128,11 +128,15 @@ namespace RepositoryLayer.Service
                 var pinned = fundoocontext.NotesTable.Where(x => x.NoteId == noteid).FirstOrDefault();
                 if (pinned.IsPinned==true)
                 {
-                    return true;
+                    pinned.IsPinned = false;
+                    fundoocontext.SaveChanges();
+                    return false;
                 }
                 else
                 {
-                    return false;
+                    pinned.IsPinned = false;
+                    fundoocontext.SaveChanges();
+                    return true;
                 }
             }
 
@@ -149,11 +153,16 @@ namespace RepositoryLayer.Service
                 var trash = fundoocontext.NotesTable.Where(x => x.NoteId == noteid).FirstOrDefault();
                 if (trash.Trash == true)
                 {
-                    return true;
+                    trash.Trash = false;
+                    fundoocontext.SaveChanges();
+
+                    return false;
                 }
                 else
                 {
-                    return false;
+                    trash.Trash = true;
+                    fundoocontext.SaveChanges();
+                    return true;
                 }
             }
 
@@ -170,11 +179,16 @@ namespace RepositoryLayer.Service
                 var archieve = fundoocontext.NotesTable.Where(x => x.NoteId == noteid).FirstOrDefault();
                 if (archieve.Archieve == true)
                 {
-                    return true;
+                    archieve.Archieve = false;
+                    fundoocontext.SaveChanges();
+
+                    return false;
                 }
                 else
                 {
-                    return false;
+                    archieve.Archieve = true;
+                    fundoocontext.SaveChanges();
+                    return true;
                 }
             }
 

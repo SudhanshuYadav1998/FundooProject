@@ -139,7 +139,7 @@ namespace FunDooNoteApplication.Controllers
 
             {
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
-                var notes = this.noteBL.Trash( noteId);
+                var notes = this.noteBL.Trash(noteId);
                 if (notes != false)
                 {
                     return this.Ok(new { Success = true, message = "your Note is in trash" });
