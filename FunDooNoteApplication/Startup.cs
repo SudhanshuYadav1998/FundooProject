@@ -65,7 +65,8 @@ namespace FunDooNoteApplication
             services.AddTransient<IUserRL, UserRL>();
             services.AddTransient<INoteBL, NotesBL>();
             services.AddTransient<INoteRL, NotesRL>();
-
+            services.AddTransient<ICollabBL, CollabBL>();
+            services.AddTransient<ICollabRL, CollabRL>();
 
 
 
@@ -107,7 +108,7 @@ namespace FunDooNoteApplication
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("../swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("../swagger/v1/swagger.json", "Fundoo Notes");
             });
             //This middleware is used to redirects HTTP requests to HTTPS.
             app.UseHttpsRedirection();

@@ -177,5 +177,49 @@ namespace FunDooNoteApplication.Controllers
                 throw ex;
             }
         }
+        [HttpPut("Image")]
+        public IActionResult BGImage(long NotesId, IFormFile image)
+        {
+            {
+                try
+                {
+                    long userId = Convert.ToInt32(User.Claims.FirstOrDefault(X => X.Type == "UserId").Value);
+                    var result = this.noteBL.BGImage(NotesId, image);
+                    if (result == true)
+                    {
+                        return this.Ok(new { isSuccess = true, message = "BGImage Added Successfully!", data = result });
+                    }
+                    else
+                        return this.BadRequest(new { isSuccess = false, message = " BGImage not Added!" });
+                }
+                catch (Exception ex)
+                {
+                    return this.BadRequest(new { Status = false, isSuccess = false, message = ex.InnerException.Message });
+                }
+            }
+
+
+        }
+        [HttpPut("AddColor")]
+        public IActionResult AddColor(long NotesId, string color)
+        {
+            {
+                try
+                {
+                    long userId = Convert.ToInt32(User.Claims.FirstOrDefault(X => X.Type == "UserId").Value);
+                    var result = this.noteBL.AddColor(NotesId, color);
+                    if (result == true)
+                    {
+                        return this.Ok(new { isSuccess = true, message = "Color Added Successfully!", data = result });
+                    }
+                    else
+                        return this.BadRequest(new { isSuccess = false, message = " Color not Added!" });
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
     }
 }

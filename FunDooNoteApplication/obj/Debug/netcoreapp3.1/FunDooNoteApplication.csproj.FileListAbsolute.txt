@@ -6,6 +6,7 @@ C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\FunDooNoteApplication.runtimeconfig.dev.json
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\FunDooNoteApplication.dll
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\FunDooNoteApplication.pdb
+C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\CloudinaryDotNet.dll
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\Experimental.System.Messaging.dll
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll

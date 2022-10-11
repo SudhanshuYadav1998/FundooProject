@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer.Model;
+using Microsoft.AspNetCore.Http;
 using RepositoryLayer.Entities;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
@@ -95,7 +96,30 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
+        public bool BGImage(long NotesId, IFormFile image)
+        {
+            try
+            {
+                return notesRL.BGImage(NotesId,image);
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
+        public bool AddColor(long NotesId, string color)
+        {
+            try
+            {
+                return notesRL.AddColor(NotesId, color);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 
 }
