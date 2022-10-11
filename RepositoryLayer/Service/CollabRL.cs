@@ -68,6 +68,7 @@ namespace RepositoryLayer.Service
             {
                 var collabCheck = fundoocontext.CollabTable.Where(x => x.CollabId == collabid).FirstOrDefault();
                 this.fundoocontext.CollabTable.Remove(collabCheck);
+
                 int result = this.fundoocontext.SaveChanges();
                 if (result != 0)
                 {
