@@ -32,6 +32,7 @@ namespace FunDooNoteApplication.Controllers
             try
             {
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+
                 var result = this.collabBL.CreateCollab(NoteId,email);
 
                 if (result != null)
