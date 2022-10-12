@@ -36,7 +36,7 @@ namespace FunDooNoteApplication.Controllers
                 var result = this.labelBL.CreateLabel(labelModel);
                 if (result != null && userid != 0)
                 {
-                    return this.Ok(new { success = true, message = "Label Added Successfully",data=labelModel });
+                    return this.Ok(new { success = true, message = "Label Added Successfully", data=labelModel });
 
                 }
                 else
