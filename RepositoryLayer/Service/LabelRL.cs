@@ -18,6 +18,7 @@ namespace RepositoryLayer.Service
             this.fundoocontext = fundoocontext;
         }
 
+       
         public LabelEntity CreateLabel(LabelModel labelModel)
         {
             try

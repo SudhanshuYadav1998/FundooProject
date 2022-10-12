@@ -26,6 +26,7 @@ namespace FunDooNoteApplication.Controllers
             this.fundoocontext = fundoocontext;
         }  
 
+       
         [HttpPost("Create")]
         public IActionResult CreateLabel(LabelModel labelModel)
         {
