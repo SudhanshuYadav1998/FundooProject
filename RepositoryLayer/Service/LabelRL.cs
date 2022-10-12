@@ -86,5 +86,31 @@ namespace RepositoryLayer.Service
                 throw;
             }
         }
+        public bool UpdateLabel(LabelModel labelModel,long labelid)
+        {
+            try
+            {
+                var LabelCheck = fundoocontext.LabelTable.Where(x => x.LabelId == labelid).FirstOrDefault();
+                if(LabelCheck != null)
+                {
+                    
+                    LabelCheck.LabelName=labelModel.LabelName;
+                    LabelCheck.NoteId=labelModel.NoteId;
+                    
+                    fundoocontext.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

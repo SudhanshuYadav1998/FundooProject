@@ -78,7 +78,31 @@ namespace FunDooNoteApplication.Controllers
                 var result = this.labelBL.DeleteLabel(labelid);
                 if (result != false && userid != 0)
                 {
-                    return this.Ok(new { success = true, message = "Label Added Successfully" });
+                    return this.Ok(new { success = true, message = "Label deleted Successfully" });
+
+                }
+                else
+                {
+                    return this.BadRequest(new { success = false, message = "Something Goes Wrong" });
+
+                }
+            }
+            catch (SystemException)
+            {
+
+                throw;
+            }
+        }
+        [HttpPut("UpdateLabel")]
+        public IActionResult UpdateLabel(LabelModel labelModel,long labelid)
+        {
+            try
+            {
+                var userid = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                var result = this.labelBL.UpdateLabel(labelModel,labelid);
+                if (result != false && userid != 0)
+                {
+                    return this.Ok(new { success = true, message = "Label Updated Successfully" });
 
                 }
                 else
