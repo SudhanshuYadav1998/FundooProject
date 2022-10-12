@@ -51,6 +51,8 @@ namespace FunDooNoteApplication.Controllers
                 throw;
             }
         }
+       
+        
         [HttpGet("GetAllLabel")]
         public List<LabelEntity> GetLabel()
         {
