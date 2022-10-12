@@ -68,6 +68,7 @@ namespace FunDooNoteApplication.Controllers
                 throw;
             }
         }
+       
         [HttpDelete("DeleteLabel")]
         public IActionResult DeleteLabel(long labelid)
         {
