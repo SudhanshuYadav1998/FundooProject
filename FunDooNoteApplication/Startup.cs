@@ -67,6 +67,8 @@ namespace FunDooNoteApplication
             services.AddTransient<INoteRL, NotesRL>();
             services.AddTransient<ICollabBL, CollabBL>();
             services.AddTransient<ICollabRL, CollabRL>();
+            services.AddTransient<ILabelBL, LabelBL>();
+            services.AddTransient<ILabelRL, LabelRL>();
 
 
 
