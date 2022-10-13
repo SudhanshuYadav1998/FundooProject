@@ -29,8 +29,10 @@ namespace FunDooNoteApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Fundoocontext>(opts => opts.UseSqlServer(Configuration["ConnectionString:FundooDB"]));
+            services.AddMemoryCache();
+
             services.AddControllers();
-            // services.AddSwaggerGen();
+           
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Welcome to FundooNotes" });
@@ -69,9 +71,7 @@ namespace FunDooNoteApplication
             services.AddTransient<ICollabRL, CollabRL>();
             services.AddTransient<ILabelBL, LabelBL>();
             services.AddTransient<ILabelRL, LabelRL>();
-
-
-
+           
             services.AddAuthentication(option =>
             {
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -93,7 +93,13 @@ namespace FunDooNoteApplication
                 };
 
             });
-           
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = "localhost:6379";
+            });
+            services.AddMemoryCache();
+
+
 
         }
 

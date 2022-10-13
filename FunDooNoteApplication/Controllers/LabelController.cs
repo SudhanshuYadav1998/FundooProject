@@ -69,7 +69,7 @@ namespace FunDooNoteApplication.Controllers
             }
         }
        
-        [HttpDelete("DeleteLabel")]
+        [HttpDelete("Delete")]
         public IActionResult DeleteLabel(long labelid)
         {
             try
@@ -93,7 +93,7 @@ namespace FunDooNoteApplication.Controllers
                 throw;
             }
         }
-        [HttpPut("UpdateLabel")]
+        [HttpPut("Update")]
         public IActionResult UpdateLabel(LabelModel labelModel,long labelid)
         {
             try

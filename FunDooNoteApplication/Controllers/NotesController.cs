@@ -8,6 +8,12 @@ using BusinessLayer.Interface;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entities;
 using System.Collections.Generic;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace FunDooNoteApplication.Controllers
 {
@@ -19,10 +25,14 @@ namespace FunDooNoteApplication.Controllers
     {
         private readonly INoteBL noteBL;
         private readonly Fundoocontext fundooContext;
-        public NotesController(INoteBL noteBL, Fundoocontext fundoocontext)
+        private readonly IMemoryCache memoryCache;
+        private readonly IDistributedCache distributedCache;
+        public NotesController(INoteBL noteBL, Fundoocontext fundoocontext, IMemoryCache memoryCache, IDistributedCache distributedCache)
         {
             this.fundooContext = fundoocontext;
             this.noteBL = noteBL;
+            this.memoryCache = memoryCache;
+            this.distributedCache = distributedCache;
         }
 
         [HttpPost("Create")]
@@ -87,16 +97,16 @@ namespace FunDooNoteApplication.Controllers
             }
         }
         [HttpPut("Update")]
-        public IActionResult UpdateNotesOfUser(NotesModel notesModel,long noteId)
+        public IActionResult UpdateNotesOfUser(NotesModel notesModel, long noteId)
         {
             try
 
             {
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
-                var notes = this.noteBL.UpdateNote(notesModel,noteId);
-                if (notes!=false )
+                var notes = this.noteBL.UpdateNote(notesModel, noteId);
+                if (notes != false)
                 {
-                    return this.Ok(new { Success = true, message = "Note updated successfully",data=notesModel });
+                    return this.Ok(new { Success = true, message = "Note updated successfully", data = notesModel });
                 }
                 else
                 {
@@ -110,7 +120,7 @@ namespace FunDooNoteApplication.Controllers
         }
 
         [HttpPut("Pin")]
-        public IActionResult Pinned( long noteId)
+        public IActionResult Pinned(long noteId)
         {
             try
 
@@ -220,6 +230,32 @@ namespace FunDooNoteApplication.Controllers
                     throw ex;
                 }
             }
+
+        }
+        [HttpGet("Redis")]
+        public async Task<IActionResult> GetAllNotesUsingRedisCache()
+        {
+            var cacheKey = "NotesList";
+            string serializedNotesList;
+            var NotesList = new List<NotesEntity>();
+            var redisNotesList = await distributedCache.GetAsync(cacheKey);
+            if (redisNotesList != null)
+            {
+                serializedNotesList = Encoding.UTF8.GetString(redisNotesList);
+                NotesList = JsonConvert.DeserializeObject<List<NotesEntity>>(serializedNotesList);
+            }
+            else
+            {
+                NotesList = await fundooContext.NotesTable.ToListAsync();
+                serializedNotesList = JsonConvert.SerializeObject(NotesList);
+                redisNotesList = Encoding.UTF8.GetBytes(serializedNotesList);
+                var options = new DistributedCacheEntryOptions()
+                    .SetAbsoluteExpiration(DateTime.Now.AddMinutes(10))
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(2));
+                await distributedCache.SetAsync(cacheKey, redisNotesList, options);
+            }
+            return Ok(NotesList);
         }
     }
 }
+
