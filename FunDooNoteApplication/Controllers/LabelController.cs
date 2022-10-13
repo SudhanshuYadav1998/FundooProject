@@ -10,6 +10,12 @@ using Microsoft.AspNetCore.Authorization;
 using BusinessLayer.Interface;
 using RepositoryLayer.Context;
 using System.Collections.Generic;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.EntityFrameworkCore;
 
 namespace FunDooNoteApplication.Controllers
 {
@@ -20,10 +26,14 @@ namespace FunDooNoteApplication.Controllers
     {
         private readonly ILabelBL labelBL;
         private readonly Fundoocontext fundoocontext;
-        public LabelController(ILabelBL labelBL,Fundoocontext fundoocontext)
+        private readonly IMemoryCache memoryCache;
+        private readonly IDistributedCache distributedCache;
+        public LabelController(ILabelBL labelBL,Fundoocontext fundoocontext, IMemoryCache memoryCache, IDistributedCache distributedCache)
         {
             this.labelBL = labelBL;
             this.fundoocontext = fundoocontext;
+            this.memoryCache = memoryCache;
+            this.distributedCache = distributedCache;
         }  
 
        
@@ -116,6 +126,30 @@ namespace FunDooNoteApplication.Controllers
 
                 throw;
             }
+        }
+        [HttpGet("Redis")]
+        public async Task<IActionResult> GetAllLabelUsingRedisCache()
+        {
+            var cacheKey = "LabelList";
+            string serializedLabelList;
+            var LabelList = new List<LabelEntity>();
+            var redisLabelList = await distributedCache.GetAsync(cacheKey);
+            if (redisLabelList != null)
+            {
+                serializedLabelList = Encoding.UTF8.GetString(redisLabelList);
+                LabelList = JsonConvert.DeserializeObject<List<LabelEntity>>(serializedLabelList);
+            }
+            else
+            {
+                LabelList = await fundoocontext.LabelTable.ToListAsync();
+                serializedLabelList = JsonConvert.SerializeObject(LabelList);
+                redisLabelList = Encoding.UTF8.GetBytes(serializedLabelList);
+                var options = new DistributedCacheEntryOptions()
+                .SetAbsoluteExpiration(DateTime.Now.AddMinutes(10))
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(2));
+                await distributedCache.SetAsync(cacheKey, redisLabelList, options);
+            }
+            return Ok(LabelList);
         }
     }
 }
