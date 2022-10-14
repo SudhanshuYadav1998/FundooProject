@@ -59,6 +59,7 @@ namespace FunDooNoteApplication.Controllers
                     return this.Ok(new { success = true, message = "Login Successful", data = result });
                 }
                 else
+                    
                     _logger.LogInformation("User does not exists in Db");
                 return this.BadRequest(new { success = false, message = "Something Goes Wrong,Login Unsuccessful" });
             }
