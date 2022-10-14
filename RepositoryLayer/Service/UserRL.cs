@@ -1,5 +1,6 @@
 ﻿using CommonLayer.Model;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entities;
@@ -20,10 +21,12 @@ namespace RepositoryLayer.Service
     {
         private readonly Fundoocontext _fundooContext;
         IConfiguration _Appsettings;
-        public UserRL(Fundoocontext fundooContext, IConfiguration Appsettings)
+        private readonly ILogger<UserRL> _logger;
+        public UserRL(Fundoocontext fundooContext, IConfiguration Appsettings,ILogger<UserRL> logger)
         {
             _fundooContext = fundooContext;
             _Appsettings = Appsettings;
+            _logger=logger;
         }
         public UserEntity Registration(UserRegistration userRegistration)
         {
@@ -36,6 +39,7 @@ namespace RepositoryLayer.Service
                     Email = userRegistration.Email,
                     Password = Encrypt(userRegistration.Password),
                 };
+                _logger.LogInformation("User Added SuccessFully");
                 _fundooContext.UserTable.Add(userEntity);
                 int result=_fundooContext.SaveChanges();
                 if(result > 0)

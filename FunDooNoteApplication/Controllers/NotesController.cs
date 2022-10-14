@@ -75,7 +75,7 @@ namespace FunDooNoteApplication.Controllers
             }
             catch (Exception)
             {
-
+                _logger.LogError("Some error occured in fetching all notes");
                 throw;
             }
 

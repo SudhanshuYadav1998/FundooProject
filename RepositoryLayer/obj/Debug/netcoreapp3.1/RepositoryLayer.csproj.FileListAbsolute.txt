@@ -14,5 +14,3 @@ C:\RFP\C_sharp\FunDooNoteApplication\RepositoryLayer\obj\Debug\netcoreapp3.1\Rep
 C:\RFP\C_sharp\FunDooNoteApplication\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.dll
 C:\RFP\C_sharp\FunDooNoteApplication\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.pdb
 C:\RFP\C_sharp\FunDooNoteApplication\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.genruntimeconfig.cache
-C:\RFP\C_sharp\FunDooNoteApplication\RepositoryLayer\bin\Debug\netcoreapp3.1\Logger.txt.txt
-C:\RFP\C_sharp\FunDooNoteApplication\RepositoryLayer\bin\Debug\netcoreapp3.1\NLog.config

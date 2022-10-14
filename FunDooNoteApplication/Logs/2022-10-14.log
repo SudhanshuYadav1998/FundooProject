@@ -133,3 +133,85 @@ WHERE [u].[Email] = @__userlogin_Email_0
 2022-10-14 15:37:38.1712 INFO Executed action FunDooNoteApplication.Controllers.UserController.UserLogin (FunDooNoteApplication) in 53.8446ms
 2022-10-14 15:37:38.1712 INFO Executed endpoint 'FunDooNoteApplication.Controllers.UserController.UserLogin (FunDooNoteApplication)'
 2022-10-14 15:37:38.1712 INFO Request finished in 85.4835ms 200 application/json; charset=utf-8
+2022-10-14 23:36:11.3810 INFO User profile is available. Using 'C:\Users\Sudhanshu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-14 23:36:12.1601 INFO Application started. Press Ctrl+C to shut down.
+2022-10-14 23:36:12.1796 INFO Hosting environment: Development
+2022-10-14 23:36:12.1837 INFO Content root path: C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication
+2022-10-14 23:36:12.2473 INFO Request starting HTTP/2.0 GET https://localhost:44391/swagger/index.html  
+2022-10-14 23:36:12.7303 INFO Request finished in 487.5537ms 200 text/html;charset=utf-8
+2022-10-14 23:36:12.7303 INFO Request starting HTTP/2.0 GET https://localhost:44391/_vs/browserLink  
+2022-10-14 23:36:12.7303 INFO Request starting HTTP/2.0 GET https://localhost:44391/_framework/aspnetcore-browser-refresh.js  
+2022-10-14 23:36:12.7959 INFO Request finished in 60.409ms 200 application/javascript; charset=utf-8
+2022-10-14 23:36:12.9371 INFO Request finished in 200.3331ms 200 text/javascript; charset=UTF-8
+2022-10-14 23:36:13.1474 INFO Request starting HTTP/2.0 GET https://localhost:44391/swagger/v1/swagger.json  
+2022-10-14 23:36:13.3741 INFO Request finished in 227.0395ms 200 application/json;charset=utf-8
+2022-10-14 23:37:18.6481 INFO Request starting HTTP/2.0 POST https://localhost:44391/api/User/Register application/json 101
+2022-10-14 23:37:18.8467 INFO Executing endpoint 'FunDooNoteApplication.Controllers.UserController.UserRegistration (FunDooNoteApplication)'
+2022-10-14 23:37:18.8860 INFO Route matched with {action = "UserRegistration", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UserRegistration(CommonLayer.Model.UserRegistration) on controller FunDooNoteApplication.Controllers.UserController (FunDooNoteApplication).
+2022-10-14 23:37:19.1265 INFO User Added SuccessFully
+2022-10-14 23:37:19.8346 INFO Entity Framework Core 3.1.0 initialized 'Fundoocontext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-10-14 23:37:22.0195 INFO Executed DbCommand (91ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [UserTable] ([Email], [FirstName], [LastName], [Password])
+VALUES (@p0, @p1, @p2, @p3);
+SELECT [UserId]
+FROM [UserTable]
+WHERE @@ROWCOUNT = 1 AND [UserId] = scope_identity();
+2022-10-14 23:37:22.1321 INFO Executing ObjectResult, writing value of type '<>f__AnonymousType2`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RepositoryLayer.Entities.UserEntity, RepositoryLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-14 23:37:22.1548 INFO Executed action FunDooNoteApplication.Controllers.UserController.UserRegistration (FunDooNoteApplication) in 3262.8156ms
+2022-10-14 23:37:22.1548 INFO Executed endpoint 'FunDooNoteApplication.Controllers.UserController.UserRegistration (FunDooNoteApplication)'
+2022-10-14 23:37:22.1548 INFO Request finished in 3522.2877ms 200 application/json; charset=utf-8
+2022-10-14 23:38:04.1924 INFO Request starting HTTP/2.0 POST https://localhost:44391/api/User/Login application/json 53
+2022-10-14 23:38:04.2119 INFO Executing endpoint 'FunDooNoteApplication.Controllers.UserController.UserLogin (FunDooNoteApplication)'
+2022-10-14 23:38:04.2272 INFO Route matched with {action = "UserLogin", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UserLogin(CommonLayer.Model.UserLogin) on controller FunDooNoteApplication.Controllers.UserController (FunDooNoteApplication).
+2022-10-14 23:38:04.2974 INFO Entity Framework Core 3.1.0 initialized 'Fundoocontext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-10-14 23:38:04.5880 INFO Executed DbCommand (5ms) [Parameters=[@__userlogin_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[Email], [u].[FirstName], [u].[LastName], [u].[Password]
+FROM [UserTable] AS [u]
+WHERE [u].[Email] = @__userlogin_Email_0
+2022-10-14 23:38:04.8837 INFO User exists in Db
+2022-10-14 23:38:04.8837 INFO Executing ObjectResult, writing value of type '<>f__AnonymousType2`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-10-14 23:38:04.8870 INFO Executed action FunDooNoteApplication.Controllers.UserController.UserLogin (FunDooNoteApplication) in 659.2729ms
+2022-10-14 23:38:04.8870 INFO Executed endpoint 'FunDooNoteApplication.Controllers.UserController.UserLogin (FunDooNoteApplication)'
+2022-10-14 23:38:04.8870 INFO Request finished in 697.0635ms 200 application/json; charset=utf-8
+2022-10-14 23:38:30.2117 INFO Request starting HTTP/2.0 GET https://localhost:44391/api/Collab/GetAllCollab  
+2022-10-14 23:38:30.3185 INFO Successfully validated the token.
+2022-10-14 23:38:30.3283 INFO Authorization was successful.
+2022-10-14 23:38:30.3283 INFO Executing endpoint 'FunDooNoteApplication.Controllers.CollabController.GetAllCollab (FunDooNoteApplication)'
+2022-10-14 23:38:30.3283 INFO Route matched with {action = "GetAllCollab", controller = "Collab"}. Executing controller action with signature System.Collections.Generic.List`1[RepositoryLayer.Entities.CollabEntity] GetAllCollab() on controller FunDooNoteApplication.Controllers.CollabController (FunDooNoteApplication).
+2022-10-14 23:38:30.3594 INFO Entity Framework Core 3.1.0 initialized 'Fundoocontext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-10-14 23:38:30.3815 INFO Executed DbCommand (6ms) [Parameters=[@__UserId_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[CollabId], [c].[CollabEmail], [c].[NoteId], [c].[UserId]
+FROM [CollabTable] AS [c]
+WHERE [c].[UserId] = @__UserId_0
+2022-10-14 23:38:30.3815 INFO Note Id and email are matched in Db for getting all Collab
+2022-10-14 23:38:30.3856 INFO Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[RepositoryLayer.Entities.CollabEntity, RepositoryLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-14 23:38:30.3856 INFO Executed action FunDooNoteApplication.Controllers.CollabController.GetAllCollab (FunDooNoteApplication) in 55.7532ms
+2022-10-14 23:38:30.3856 INFO Executed endpoint 'FunDooNoteApplication.Controllers.CollabController.GetAllCollab (FunDooNoteApplication)'
+2022-10-14 23:38:30.3856 INFO Request finished in 181.4805ms 200 application/json; charset=utf-8
+2022-10-14 23:38:47.6603 INFO Request starting HTTP/2.0 GET https://localhost:44391/api/Label/Redis  
+2022-10-14 23:38:47.6603 INFO Successfully validated the token.
+2022-10-14 23:38:47.6603 INFO Authorization was successful.
+2022-10-14 23:38:47.6603 INFO Executing endpoint 'FunDooNoteApplication.Controllers.LabelController.GetAllLabelUsingRedisCache (FunDooNoteApplication)'
+2022-10-14 23:38:47.6796 INFO Route matched with {action = "GetAllLabelUsingRedisCache", controller = "Label"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllLabelUsingRedisCache() on controller FunDooNoteApplication.Controllers.LabelController (FunDooNoteApplication).
+2022-10-14 23:38:48.0952 INFO Entity Framework Core 3.1.0 initialized 'Fundoocontext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-10-14 23:38:48.1335 INFO Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [l].[LabelId], [l].[LabelName], [l].[NoteId], [l].[UserId]
+FROM [LabelTable] AS [l]
+2022-10-14 23:38:48.3092 INFO Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[RepositoryLayer.Entities.LabelEntity, RepositoryLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-14 23:38:48.3092 INFO Executed action FunDooNoteApplication.Controllers.LabelController.GetAllLabelUsingRedisCache (FunDooNoteApplication) in 634.1364ms
+2022-10-14 23:38:48.3092 INFO Executed endpoint 'FunDooNoteApplication.Controllers.LabelController.GetAllLabelUsingRedisCache (FunDooNoteApplication)'
+2022-10-14 23:38:48.3092 INFO Request finished in 656.7927ms 200 application/json; charset=utf-8
+2022-10-14 23:39:00.5840 INFO Request starting HTTP/2.0 GET https://localhost:44391/api/Notes/Redis  
+2022-10-14 23:39:00.5931 INFO Successfully validated the token.
+2022-10-14 23:39:00.5931 INFO Authorization was successful.
+2022-10-14 23:39:00.5931 INFO Executing endpoint 'FunDooNoteApplication.Controllers.NotesController.GetAllNotesUsingRedisCache (FunDooNoteApplication)'
+2022-10-14 23:39:00.6169 INFO Route matched with {action = "GetAllNotesUsingRedisCache", controller = "Notes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllNotesUsingRedisCache() on controller FunDooNoteApplication.Controllers.NotesController (FunDooNoteApplication).
+2022-10-14 23:39:00.6291 INFO Entity Framework Core 3.1.0 initialized 'Fundoocontext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-10-14 23:39:00.6469 INFO Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [n].[NoteId], [n].[Archieve], [n].[BgImage], [n].[Color], [n].[Created], [n].[Description], [n].[Edited], [n].[IsPinned], [n].[Reminder], [n].[Title], [n].[Trash], [n].[UserId]
+FROM [NotesTable] AS [n]
+2022-10-14 23:39:00.6794 INFO Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[RepositoryLayer.Entities.NotesEntity, RepositoryLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-14 23:39:00.6794 INFO Executed action FunDooNoteApplication.Controllers.NotesController.GetAllNotesUsingRedisCache (FunDooNoteApplication) in 67.8493ms
+2022-10-14 23:39:00.6794 INFO Executed endpoint 'FunDooNoteApplication.Controllers.NotesController.GetAllNotesUsingRedisCache (FunDooNoteApplication)'
+2022-10-14 23:39:00.6894 INFO Request finished in 105.3033ms 200 application/json; charset=utf-8
