@@ -4,6 +4,7 @@ using CommonLayer.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Security.Claims;
 
@@ -15,9 +16,12 @@ namespace FunDooNoteApplication.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserBL userBL;
-        public UserController(IUserBL userBL)
+        private readonly ILogger<UserController> _logger;
+
+        public UserController(IUserBL userBL, ILogger<UserController> logger)
         {
             this.userBL = userBL;
+            _logger = logger;
         }
         [HttpPost("Register")]
         public IActionResult UserRegistration(UserRegistration userRegistration)
@@ -47,12 +51,16 @@ namespace FunDooNoteApplication.Controllers
             try
             {
                 var result = userBL.UserLogin(userlogin);
+
+                
                 if (result != null)
                 {
+                    _logger.LogInformation("User exists in Db");
                     return this.Ok(new { success = true, message = "Login Successful", data = result });
                 }
                 else
-                    return this.BadRequest(new { success = false, message = "Something Goes Wrong,Login Unsuccessful" });
+                    _logger.LogInformation("User does not exists in Db");
+                return this.BadRequest(new { success = false, message = "Something Goes Wrong,Login Unsuccessful" });
             }
             catch (Exception ex)
             {

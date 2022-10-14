@@ -16,6 +16,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using NLog;
 
 namespace FunDooNoteApplication.Controllers
 {
@@ -28,12 +30,14 @@ namespace FunDooNoteApplication.Controllers
         private readonly Fundoocontext fundoocontext;
         private readonly IMemoryCache memoryCache;
         private readonly IDistributedCache distributedCache;
-        public LabelController(ILabelBL labelBL,Fundoocontext fundoocontext, IMemoryCache memoryCache, IDistributedCache distributedCache)
+        private readonly ILogger<LabelController> _logger;
+        public LabelController(ILabelBL labelBL,Fundoocontext fundoocontext, IMemoryCache memoryCache, IDistributedCache distributedCache, ILogger<LabelController> _logger)
         {
             this.labelBL = labelBL;
             this.fundoocontext = fundoocontext;
             this.memoryCache = memoryCache;
             this.distributedCache = distributedCache;
+            this._logger = _logger;
         }  
 
        
@@ -43,9 +47,14 @@ namespace FunDooNoteApplication.Controllers
             try
             {
                 var userid = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                _logger.LogInformation("User id matched create Label");
+
                 var result = this.labelBL.CreateLabel(labelModel);
+                
                 if (result != null && userid != 0)
                 {
+                    _logger.LogInformation("User id and result matched in create Label");
+
                     return this.Ok(new { success = true, message = "Label Added Successfully", data=labelModel });
 
                 }
@@ -68,8 +77,11 @@ namespace FunDooNoteApplication.Controllers
         {
             try
             {
+                
                 var userid = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                
                 var result = this.labelBL.GetAllLabel(userid);
+                _logger.LogInformation("User id matched in get all Label");
                 return result;
             }
             catch (SystemException)
@@ -85,14 +97,19 @@ namespace FunDooNoteApplication.Controllers
             try
             {
                 var userid = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                _logger.LogInformation("User id matched in Delete Label");
+
                 var result = this.labelBL.DeleteLabel(labelid);
                 if (result != false && userid != 0)
                 {
+                    _logger.LogInformation("User id and result matched in Delete Label");
+
                     return this.Ok(new { success = true, message = "Label deleted Successfully" });
 
                 }
                 else
                 {
+
                     return this.BadRequest(new { success = false, message = "Something Goes Wrong" });
 
                 }
@@ -109,9 +126,12 @@ namespace FunDooNoteApplication.Controllers
             try
             {
                 var userid = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+                
                 var result = this.labelBL.UpdateLabel(labelModel,labelid);
+                _logger.LogInformation("User id matched in Update Label");
                 if (result != false && userid != 0)
                 {
+                    _logger.LogInformation("User id and result matched in Update Label");
                     return this.Ok(new { success = true, message = "Label Updated Successfully" });
 
                 }

@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
 namespace FunDooNoteApplication.Controllers
 {
@@ -28,12 +29,15 @@ namespace FunDooNoteApplication.Controllers
         private readonly Fundoocontext fundooContext;
         private readonly IMemoryCache memoryCache;
         private readonly IDistributedCache distributedCache;
-        public CollabController(ICollabBL collabBL, Fundoocontext fundoocontext, IMemoryCache memoryCache, IDistributedCache distributedCache)
+        private readonly ILogger<CollabController> _logger;
+
+        public CollabController(ICollabBL collabBL, Fundoocontext fundoocontext, IMemoryCache memoryCache, IDistributedCache distributedCache, ILogger<CollabController> _logger)
         {
             this.fundooContext = fundoocontext;
             this.collabBL = collabBL;
             this.memoryCache = memoryCache;
             this.distributedCache = distributedCache;
+            this._logger = _logger;
         }
 
         [HttpPost("Create")]
@@ -47,6 +51,7 @@ namespace FunDooNoteApplication.Controllers
 
                 if (result != null)
                 {
+                    _logger.LogInformation("Note Id and email are matched in Db for collab creation");
                     return this.Ok(new { success = true, message = "Collab Added Successfully" });
                 }
                 else
@@ -68,6 +73,8 @@ namespace FunDooNoteApplication.Controllers
             {
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
                 var result = this.collabBL.GetAllCollab(userId);
+                _logger.LogInformation("Note Id and email are matched in Db for getting all Collab");
+
                 return result;
             }
             catch (Exception)

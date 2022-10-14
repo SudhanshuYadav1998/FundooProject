@@ -13,3 +13,5 @@ C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\Busin
 C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
 C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
 C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\Logger.txt.txt
+C:\RFP\C_sharp\FunDooNoteApplication\BusinessLayer\bin\Debug\netcoreapp3.1\NLog.config

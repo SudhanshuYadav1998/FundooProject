@@ -88,3 +88,8 @@ C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\Logger.txt.txt
+C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\NLog.config
+C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\NLog.dll
+C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+C:\RFP\C_sharp\FunDooNoteApplication\FunDooNoteApplication\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll

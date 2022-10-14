@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace FunDooNoteApplication.Controllers
 {
@@ -27,12 +28,15 @@ namespace FunDooNoteApplication.Controllers
         private readonly Fundoocontext fundooContext;
         private readonly IMemoryCache memoryCache;
         private readonly IDistributedCache distributedCache;
-        public NotesController(INoteBL noteBL, Fundoocontext fundoocontext, IMemoryCache memoryCache, IDistributedCache distributedCache)
+        private readonly ILogger<NotesController> _logger;
+
+        public NotesController(INoteBL noteBL, Fundoocontext fundoocontext, IMemoryCache memoryCache, IDistributedCache distributedCache, ILogger<NotesController> _logger)
         {
             this.fundooContext = fundoocontext;
             this.noteBL = noteBL;
             this.memoryCache = memoryCache;
             this.distributedCache = distributedCache;
+            this._logger = _logger;
         }
 
         [HttpPost("Create")]

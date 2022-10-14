@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6j9gMsgCAAq5R2IahWo6TLxCd5s7DpO0BMYFnD/pmiOkGhrHp52jryt+To7U4vt+yn7UJ2g4XGuwmqXBUIlhrw==",
+  "dgSpecHash": "o8Iivea40idkzg0wIjtmE19/1kQeBsD5SS0/j/wl17mRmQg+PPWQ/45trNd3nbw1q16/OYBZmFQDoWiY5v7LEw==",
   "success": true,
   "projectFilePath": "C:\\RFP\\C_sharp\\FunDooNoteApplication\\RepositoryLayer\\RepositoryLayer.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,9 @@
     "C:\\Users\\Sudhanshu\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Sudhanshu\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\Sudhanshu\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Sudhanshu\\.nuget\\packages\\nlog\\5.0.4\\nlog.5.0.4.nupkg.sha512",
+    "C:\\Users\\Sudhanshu\\.nuget\\packages\\nlog.config\\4.7.15\\nlog.config.4.7.15.nupkg.sha512",
+    "C:\\Users\\Sudhanshu\\.nuget\\packages\\nlog.schema\\4.7.15\\nlog.schema.4.7.15.nupkg.sha512",
     "C:\\Users\\Sudhanshu\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Sudhanshu\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Sudhanshu\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
