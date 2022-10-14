@@ -68,6 +68,7 @@ namespace FunDooNoteApplication.Controllers
         {
             try
             {
+                _logger.LogInformation("Get all notes working fine");
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
                 var result = this.noteBL.GetAllNotes(userId);
                 return result;
