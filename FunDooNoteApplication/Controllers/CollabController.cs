@@ -74,7 +74,6 @@ namespace FunDooNoteApplication.Controllers
                 long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
                 var result = this.collabBL.GetAllCollab(userId);
                 _logger.LogInformation("Note Id and email are matched in Db for getting all Collab");
-
                 return result;
             }
             catch (Exception)
